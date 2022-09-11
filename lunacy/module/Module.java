@@ -67,6 +67,10 @@ public class Module implements IEventTarget {
     else onDisable();
   }
 
+  public void setToggled(boolean toggled) {
+    this.toggled = toggled;
+  }
+
   public boolean isToggled() {
     return toggled;
   }

@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class FileUtil {
 
   public static File getLunacyFolder() {
-    return new File(Minecraft.getMinecraft().mcDataDir, "Eternal");
+    return new File(Minecraft.getMinecraft().mcDataDir, "Lunacy");
   }
 
   public static File getFileFromFolder(String folder, String name) {
@@ -34,7 +34,7 @@ public class FileUtil {
     try {
     FileWriter fileWriter = new FileWriter(file);
 
-    for(String str : toWrite) fileWriter.append(str);
+    for(String str : toWrite) fileWriter.append(str).append("\n");
 
     fileWriter.close();
     } catch (Exception e) {}

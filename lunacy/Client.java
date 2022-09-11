@@ -1,6 +1,7 @@
 package lunacy;
 
 import lunacy.command.CommandManager;
+import lunacy.config.ConfigManager;
 import lunacy.event.EventManager;
 import lunacy.module.ModuleManager;
 import lunacy.module.impl.movement.Sprint;
@@ -25,7 +26,12 @@ public class Client {
   public void start() {
     moduleManager.init();
     commandManager.init();
+    ConfigManager.loadConfig("toggled");
+    Runtime.getRuntime().addShutdownHook(new Thread(this::stop));
+  }
 
+  private void stop() {
+    ConfigManager.saveConfig("toggled", true);
   }
 
   public static Client getSingleton() {
