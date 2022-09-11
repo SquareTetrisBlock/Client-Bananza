@@ -5,10 +5,9 @@ import net.minecraft.util.ChatComponentText;
 
 public class Dependency {
 
-    protected static final Minecraft mc = Minecraft.getMinecraft();
+  protected static final Minecraft mc = Minecraft.getMinecraft();
 
-    public static void addToChat(String text) {
-        mc.thePlayer.addChatMessage(new ChatComponentText("[bonanza] " + text));
-    }
-
+  public static void addToChat(String text) {
+    mc.thePlayer.addChatMessage(new ChatComponentText("[bonanza] " + text));
+  }
 }

@@ -1,5 +1,6 @@
 package lunacy.module.impl.render;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
 import javafx.scene.transform.Scale;
 import lunacy.Client;
 import lunacy.event.Event;
@@ -11,30 +12,44 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.*;
 import java.util.Comparator;
 
-@ModInfo(name = "Hud", desc = "Renders a Heads Up Display.", keyCode = Keyboard.KEY_H, category = Module.Category.RENDER)
+@ModInfo(
+    name = "Hud",
+    desc = "Renders a Heads Up Display.",
+    keyCode = Keyboard.KEY_H,
+    category = Module.Category.RENDER)
 public class HUD extends Module {
 
-    public HUD() {
-        toggle();
-    }
+  public HUD() {
+    toggle();
+  }
 
-    int count = 0; //??????
+  int count = 0; // ??????
 
-    @Override
-    public void onEvent(Event event) {
-        ScaledResolution sr = new ScaledResolution(mc);
-        if (event instanceof EventRenderGui) {
-            Client.getSingleton().getModuleManager().getModules().sort(Comparator.comparingDouble(module -> fr.getStringWidth(((Module)module).getName())).reversed());
-            for(Module module : Client.getSingleton().getModuleManager().getModules()) {
-                fr.drawString("Bonanza", 3, 3, -1);
-                if(module.isToggled()) {
-                    fr.drawStringWithShadow(module.getName(), sr.getScaledWidth() - fr.getStringWidth(module.getName()) - 4, 4 + count*10, -1);
-                    count++;
-                }
-            }
-            count = 0;
+  @Override
+  public void onEvent(Event event) {
+    ScaledResolution sr = new ScaledResolution(mc);
+    if (event instanceof EventRenderGui) {
+      Client.getSingleton()
+          .getModuleManager()
+          .getModules()
+          .sort(
+              Comparator.comparingDouble(module -> fr.getStringWidth(((Module) module).getName()))
+                  .reversed());
+      for (Module module : Client.getSingleton().getModuleManager().getModules()) {
+        fr.drawStringWithShadow("B" + ChatFormatting.WHITE + "onanza", 3, 3, Color.CYAN.getRGB());
+        if (module.isToggled()) {
+          fr.drawStringWithShadow(
+              module.getName(),
+              sr.getScaledWidth() - fr.getStringWidth(module.getName()) - 4,
+              4 + count * 10,
+              module.getCategory().getColor().getRGB());
+          count++;
         }
+      }
+      count = 0;
     }
+  }
 }

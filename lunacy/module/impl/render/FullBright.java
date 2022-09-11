@@ -6,7 +6,11 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import org.lwjgl.input.Keyboard;
 
-@ModInfo(name = "Fullbright", desc = "Makes everything Bright", keyCode = 0, category = Module.Category.RENDER)
+@ModInfo(
+    name = "Fullbright",
+    desc = "Makes everything Bright",
+    keyCode = 0,
+    category = Module.Category.RENDER)
 public class FullBright extends Module {
 
     private float brightness = 0;

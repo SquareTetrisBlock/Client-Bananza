@@ -6,6 +6,8 @@ import lunacy.event.IEventTarget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
+import java.awt.*;
+
 public class Module implements IEventTarget {
 
   private String name;
@@ -24,12 +26,13 @@ public class Module implements IEventTarget {
     this.keyCode = modInfo.keyCode();
     this.category = modInfo.category();
     Client.getSingleton().getEventManager().addEvent(this);
-    Client.getSingleton().getSettingManager().addSetting(this);
   }
 
   @Override
   public void onEvent(Event event) {}
+
   public void onEnable() {}
+
   public void onDisable() {}
 
   @Override
@@ -37,10 +40,21 @@ public class Module implements IEventTarget {
     return toggled;
   }
 
-  public String getName() {return name;}
-  public String getDesc() {return desc;}
-  public int getKeyCode() {return keyCode;}
-  public Category getCategory() {return category;}
+  public String getName() {
+    return name;
+  }
+
+  public String getDesc() {
+    return desc;
+  }
+
+  public int getKeyCode() {
+    return keyCode;
+  }
+
+  public Category getCategory() {
+    return category;
+  }
 
   public void setKeyCode(int key) {
     this.keyCode = key;
@@ -57,24 +71,28 @@ public class Module implements IEventTarget {
   }
 
   public enum Category {
-    COMBAT("Combat"),
-    MOVEMENT("Movement"),
-    PLAYER("Player"),
-    RENDER("Render"),
-    EXPLOIT("Exploit"),
-    MISC("Misc");
+    COMBAT("Combat", new Color(255, 74, 74)),
+    MOVEMENT("Movement", new Color(151, 151, 255)),
+    PLAYER("Player", new Color(142, 184, 161)),
+    RENDER("Render", new Color(255, 170, 170)),
+    EXPLOIT("Exploit", new Color(255, 242, 99)),
+    MISC("Misc", new Color(125, 125, 125));
 
     private final String name;
+    private final Color color;
 
-    Category(String name) {
+    Category(String name, Color color) {
       this.name = name;
+      this.color = color;
     }
 
     public String getName() {
       return name;
     }
 
+    public Color getColor() {
+      return color;
+    }
 
   }
-
 }

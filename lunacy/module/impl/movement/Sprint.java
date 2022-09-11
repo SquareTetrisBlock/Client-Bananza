@@ -4,8 +4,6 @@ import lunacy.event.Event;
 import lunacy.event.impl.EventPlayerUpdate;
 import lunacy.module.ModInfo;
 import lunacy.module.Module;
-import lunacy.setting.SettingInfo;
-import lunacy.setting.impl.ASettingBoolean;
 import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
@@ -16,9 +14,9 @@ import org.lwjgl.input.Keyboard;
     category = Module.Category.MOVEMENT)
 public class Sprint extends Module {
 
-  @SettingInfo(name = "Test Name", desc = "Test Desc")
-  @ASettingBoolean
-  public boolean testVal = false;
+//  @SettingInfo(name = "Test Name", desc = "Test Desc")
+//  @ASettingBoolean
+//  public boolean testVal = false;
 
   @Override
   public void onEvent(Event event) {
