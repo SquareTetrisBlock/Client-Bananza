@@ -53,7 +53,6 @@ public class HUD extends Module {
       }
       count = 0;
       fr.drawStringWithShadow("FPS " + ChatFormatting.WHITE + ": " + Minecraft.getDebugFPS(), sr.getScaledWidth() - fr.getStringWidth("FPS " + ChatFormatting.WHITE + ": " + Minecraft.getDebugFPS()) - 2, sr.getScaledHeight() - 10, Color.CYAN.getRGB());
-      fr.drawStringWithShadow("BPS " + ChatFormatting.WHITE + ": " + Math.round(((mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ) * 50)), sr.getScaledWidth() - fr.getStringWidth("FPS " + ChatFormatting.WHITE + ": " + Minecraft.getDebugFPS()) - fr.getStringWidth("BPS " + ChatFormatting.WHITE + ": " + Math.round(((mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ) * 50))) - 4, sr.getScaledHeight() - 10, Color.CYAN.getRGB());
     }
   }
 }
