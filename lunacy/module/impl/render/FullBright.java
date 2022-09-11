@@ -15,8 +15,6 @@ import org.lwjgl.input.Keyboard;
     category = Module.Category.RENDER)
 public class FullBright extends Module {
 
-    private float brightness = 0;
-
     @Override
     public void onEvent(Event event) {
         if(event instanceof EventMotion) {
