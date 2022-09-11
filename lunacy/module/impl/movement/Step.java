@@ -5,7 +5,6 @@ import lunacy.event.impl.EventMotion;
 import lunacy.module.ModInfo;
 import lunacy.module.Module;
 import org.lwjgl.input.Keyboard;
-
 @ModInfo(
         name = "Step",
         desc = "Step Up Blocks.",
@@ -13,19 +12,16 @@ import org.lwjgl.input.Keyboard;
         category = Module.Category.MOVEMENT)
 public class Step extends Module {
 
-    private float stepHeight;
-
-    @Override
-    public void onEnable() {
-        stepHeight = mc.thePlayer.stepHeight;
-        mc.thePlayer.stepHeight = 2;
-        super.onEnable();
-    }
-
     @Override
     public void onDisable() {
-        mc.thePlayer.stepHeight = stepHeight;
+        mc.thePlayer.stepHeight = 0.6f;
         super.onDisable();
     }
 
+    @Override
+    public void onEvent(Event event) {
+        if(event instanceof EventMotion) {
+            mc.thePlayer.stepHeight = 2;
+        }
+    }
 }
