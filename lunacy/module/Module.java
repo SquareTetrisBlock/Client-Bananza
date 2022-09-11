@@ -24,6 +24,7 @@ public class Module implements IEventTarget {
     this.keyCode = modInfo.keyCode();
     this.category = modInfo.category();
     Client.getSingleton().getEventManager().addEvent(this);
+    Client.getSingleton().getSettingManager().addSetting(this);
   }
 
   @Override

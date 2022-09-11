@@ -16,7 +16,11 @@ import java.util.Comparator;
 @ModInfo(name = "Hud", desc = "Renders a Heads Up Display.", keyCode = Keyboard.KEY_H, category = Module.Category.RENDER)
 public class HUD extends Module {
 
-    int count = 0;
+    public HUD() {
+        toggle();
+    }
+
+    int count = 0; //??????
 
     @Override
     public void onEvent(Event event) {

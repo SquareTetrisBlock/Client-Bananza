@@ -1,25 +1,38 @@
 package lunacy.setting;
 
-public abstract class Setting<V> {
+import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
+
+public abstract class Setting<Object> {
 
   private String name;
   private String desc;
-  private V value;
+  private Field field;
+  private Object object;
 
-  public Setting(String name, String desc, V v) {
-    this.name = name;
-    this.desc = desc;
-    this.value = v;
+  public Setting(Object object, Field field) {
+    SettingInfo settingInfo = field.getAnnotation(SettingInfo.class);
+    this.name = settingInfo.name();
+    this.desc = settingInfo.desc();
   }
 
-  public V getValue() {
-    return value;
+  public void setFieldValue(Object value) {
+    try {
+      field.set(object, value);
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    }
   }
 
-  public void setValue(V value) {
-    this.value = value;
+  public Object getFieldValue() {
+    try {
+      return (Object) field.get(object);
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    }
+    return null; //ee
   }
 
-  public abstract void loadFromSetting(String val);
+  public abstract void loadValue(String str);
 
 }
