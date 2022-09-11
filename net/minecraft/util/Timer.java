@@ -8,7 +8,7 @@ public class Timer
     private double lastHRTime;
     public int elapsedTicks;
     public float renderPartialTicks;
-    public float timerSpeed = 1.0F;
+    public static float timerSpeed = 1.0F;
     public float elapsedPartialTicks;
     private long lastSyncSysClock;
     private long lastSyncHRClock;
