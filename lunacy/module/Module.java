@@ -47,10 +47,15 @@ public class Module implements IEventTarget {
     else onDisable();
   }
 
+  public boolean isToggled() {
+    return toggled;
+  }
+
   public enum Category {
     COMBAT("Combat"),
     MOVEMENT("Movement"),
     PLAYER("Player"),
+    RENDER("Render"),
     EXPLOIT("Exploit"),
     MISC("Misc");
 
@@ -63,6 +68,7 @@ public class Module implements IEventTarget {
     public String getName() {
       return name;
     }
+
 
   }
 
