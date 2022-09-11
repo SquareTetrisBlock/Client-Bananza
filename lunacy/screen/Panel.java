@@ -12,7 +12,7 @@ import java.util.List;
 public class Panel {
 
   private float x, y;
-  private boolean extended;
+  private boolean extended, dragging;
   private final Module.Category category;
   private final List<ModulePart> parts = new ArrayList<>();
   private final Minecraft mc = Minecraft.getMinecraft();

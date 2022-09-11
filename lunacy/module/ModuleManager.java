@@ -39,6 +39,10 @@ public class ModuleManager {
         .get(0); // very unsafe XD
   }
 
+  public List<Module> fromCategory(Module.Category category) {
+    return modules.stream().filter(module -> module.getCategory() == category).collect(Collectors.toList());
+  }
+
   public List<Module> getModules() {
     return modules;
   }
