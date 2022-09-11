@@ -5,6 +5,7 @@ import lunacy.event.Event;
 import lunacy.event.IEventTarget;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.util.Timer;
 
 import java.awt.*;
 
@@ -31,9 +32,9 @@ public class Module implements IEventTarget {
   @Override
   public void onEvent(Event event) {}
 
-  public void onEnable() {}
+  public void onEnable() {Timer.timerSpeed = 1;}
 
-  public void onDisable() {}
+  public void onDisable() {Timer.timerSpeed = 1;}
 
   @Override
   public boolean canFire() {

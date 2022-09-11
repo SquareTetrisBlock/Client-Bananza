@@ -1,6 +1,7 @@
 package lunacy.module.impl.movement;
 
 import lunacy.event.Event;
+import lunacy.event.impl.EventMotion;
 import lunacy.event.impl.EventPlayerUpdate;
 import lunacy.module.ModInfo;
 import lunacy.module.Module;
@@ -16,7 +17,7 @@ public class Speed extends Module {
 
   @Override
   public void onEvent(Event event) {
-    if (event instanceof EventPlayerUpdate) {
+    if (event instanceof EventMotion) {
       if (MovementUtil.isMovingOnGround()) {
         mc.thePlayer.jump();
       }

@@ -3,6 +3,7 @@ package net.minecraft.client.entity;
 import lunacy.Client;
 import lunacy.event.impl.EventMotion;
 import lunacy.event.impl.EventPlayerUpdate;
+import lunacy.module.impl.movement.NoSlow;
 import lunacy.util.main.Dependency;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
@@ -667,8 +668,10 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
         if (this.isUsingItem() && !this.isRiding())
         {
-            this.movementInput.moveStrafe *= 0.2F;
-            this.movementInput.moveForward *= 0.2F;
+            if(!Client.getSingleton().getModuleManager().getModule(NoSlow.class).isToggled()) {
+                this.movementInput.moveStrafe *= 0.2F;
+                this.movementInput.moveForward *= 0.2F;
+            }
             this.sprintToggleTimer = 0;
         }
 

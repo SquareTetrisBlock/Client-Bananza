@@ -1,6 +1,7 @@
 package lunacy.module.impl.movement;
 
 import lunacy.event.Event;
+import lunacy.event.impl.EventMotion;
 import lunacy.event.impl.EventPlayerUpdate;
 import lunacy.module.ModInfo;
 import lunacy.module.Module;
@@ -16,9 +17,10 @@ public class Fly extends Module {
 
   @Override
   public void onEvent(Event event) {
-    if (event instanceof EventPlayerUpdate) {
-      if (MovementUtil.isMovingOnGround()) mc.thePlayer.jump();
-      mc.thePlayer.motionY = MovementUtil.isMovingOnGround() ? 0.42 : 0;
+    if (event instanceof EventMotion) {
+      if (MovementUtil.isMoving() && ((EventMotion) event).isOnGround()) mc.thePlayer.jump();
+      mc.thePlayer.motionY = MovementUtil.isMoving() && ((EventMotion) event).isOnGround() ? 0.42 : 0;
+      mc.thePlayer.onGround = true;
     }
   }
 }

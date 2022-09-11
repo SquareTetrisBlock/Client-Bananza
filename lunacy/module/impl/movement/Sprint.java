@@ -21,7 +21,8 @@ public class Sprint extends Module {
   @Override
   public void onEvent(Event event) {
     if (event instanceof EventPlayerUpdate) {
-      KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
+      mc.thePlayer.setSprinting(mc.thePlayer.moveForward > 0 || mc.thePlayer.isUsingItem());
+//      KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
     }
   }
 }
