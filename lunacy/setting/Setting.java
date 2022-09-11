@@ -3,7 +3,7 @@ package lunacy.setting;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
-public abstract class Setting<Object> {
+public abstract class Setting<V> {
 
   private String name;
   private String desc;
@@ -14,9 +14,10 @@ public abstract class Setting<Object> {
     SettingInfo settingInfo = field.getAnnotation(SettingInfo.class);
     this.name = settingInfo.name();
     this.desc = settingInfo.desc();
+    this.object = object;
   }
 
-  public void setFieldValue(Object value) {
+  public void setFieldValue(V value) {
     try {
       field.set(object, value);
     } catch (IllegalAccessException e) {
@@ -24,9 +25,21 @@ public abstract class Setting<Object> {
     }
   }
 
-  public Object getFieldValue() {
+  public Object getObject() {
+    return object;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public String getDesc() {
+    return desc;
+  }
+
+  public V getFieldValue() {
     try {
-      return (Object) field.get(object);
+      return (V) field.get(object);
     } catch (IllegalAccessException e) {
       e.printStackTrace();
     }

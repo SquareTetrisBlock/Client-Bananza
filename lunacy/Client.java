@@ -3,6 +3,7 @@ package lunacy;
 import lunacy.command.CommandManager;
 import lunacy.event.EventManager;
 import lunacy.module.ModuleManager;
+import lunacy.module.impl.movement.Sprint;
 import lunacy.setting.SettingManager;
 
 public class Client {
@@ -24,6 +25,7 @@ public class Client {
   public void start() {
     moduleManager.init();
     commandManager.init();
+
   }
 
   public static Client getSingleton() {
