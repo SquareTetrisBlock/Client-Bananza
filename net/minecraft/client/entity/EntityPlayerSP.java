@@ -1,5 +1,7 @@
 package net.minecraft.client.entity;
 
+import lunacy.Client;
+import lunacy.event.impl.EventPlayerUpdate;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;
@@ -584,6 +586,7 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
     public void onLivingUpdate()
     {
+        Client.getSingleton().getEventManager().fireEvent(new EventPlayerUpdate());
         if (this.sprintingTicksLeft > 0)
         {
             --this.sprintingTicksLeft;
