@@ -8,8 +8,10 @@ import lunacy.event.impl.EventPlayerUpdate;
 import lunacy.event.impl.EventRenderGui;
 import lunacy.module.ModInfo;
 import lunacy.module.Module;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.ScaledResolution;
+import net.optifine.util.MathUtils;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -50,6 +52,8 @@ public class HUD extends Module {
         }
       }
       count = 0;
+      fr.drawStringWithShadow("FPS " + ChatFormatting.WHITE + ": " + Minecraft.getDebugFPS(), sr.getScaledWidth() - fr.getStringWidth("FPS " + ChatFormatting.WHITE + ": " + Minecraft.getDebugFPS()) - 2, sr.getScaledHeight() - 10, Color.CYAN.getRGB());
+      fr.drawStringWithShadow("BPS " + ChatFormatting.WHITE + ": " + Math.round(((mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ) * 50)), sr.getScaledWidth() - fr.getStringWidth("FPS " + ChatFormatting.WHITE + ": " + Minecraft.getDebugFPS()) - fr.getStringWidth("BPS " + ChatFormatting.WHITE + ": " + Math.round(((mc.thePlayer.motionX * mc.thePlayer.motionX + mc.thePlayer.motionZ * mc.thePlayer.motionZ) * 50))) - 4, sr.getScaledHeight() - 10, Color.CYAN.getRGB());
     }
   }
 }

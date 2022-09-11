@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class Panel {
   }
 
   public void drawPanel(int mouseX, int mouseY) {
-    Gui.drawRect(x, y, x + 100, y + 20, 0xFF111111);
+    Gui.drawRect(x, y, x + 100, y + 20, new Color(0xFF111111).brighter().brighter().brighter().getRGB());
     Gui.drawCenteredString(fr, category.getName(), x + 50, y + 6, category.getColor().getRGB());
 
     int offY = 20;

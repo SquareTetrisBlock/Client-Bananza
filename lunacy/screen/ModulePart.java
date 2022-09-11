@@ -27,7 +27,9 @@ public class ModulePart {
   }
 
   public void mouseClicked(int mouseX, int mouseY, int mouseButton) {
-    if(MouseUtil.inInArea(mouseX, mouseY, x, y, 100, 20)) module.toggle();
+    if(mouseButton == 0) {
+      if(MouseUtil.inInArea(mouseX, mouseY, x, y, 100, 20)) module.toggle();
+    }
   }
 
   public void mouseReleased(int mouseX, int mouseY, int mouseButton) {}
