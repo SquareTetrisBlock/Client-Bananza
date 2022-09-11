@@ -25,7 +25,7 @@ public class SettingManager {
 
         System.out.println(annotation);
 
-        Class<?> settingClass = translationMap.get(annotation.getClass());
+        Class<?> settingClass = translationMap.get(annotation.annotationType());
 
         try {
           Setting<?> setting = (Setting<?>) settingClass.getConstructor(Object.class, Field.class).newInstance(o, field);
