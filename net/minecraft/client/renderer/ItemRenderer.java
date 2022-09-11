@@ -334,22 +334,22 @@ public class ItemRenderer
                     switch (enumaction)
                     {
                         case NONE:
-                            this.transformFirstPersonItem(f, 0.0F);
+                            this.transformFirstPersonItem(f, f1);
                             break;
 
                         case EAT:
                         case DRINK:
-                            this.performDrinking(abstractclientplayer, partialTicks);
-                            this.transformFirstPersonItem(f, 0.0F);
+                            this.performDrinking(abstractclientplayer, f1);
+                            this.transformFirstPersonItem(f, f1);
                             break;
 
                         case BLOCK:
-                            this.transformFirstPersonItem(f, 0.0F);
+                            this.transformFirstPersonItem(f, f1);
                             this.doBlockTransformations();
                             break;
 
                         case BOW:
-                            this.transformFirstPersonItem(f, 0.0F);
+                            this.transformFirstPersonItem(f, f1);
                             this.doBowTransformations(partialTicks, abstractclientplayer);
                     }
                 }
