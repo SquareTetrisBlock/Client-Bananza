@@ -41,6 +41,10 @@ public class Module implements IEventTarget {
   public int getKeyCode() {return keyCode;}
   public Category getCategory() {return category;}
 
+  public void setKeyCode(int key) {
+    this.keyCode = key;
+  }
+
   public void toggle() {
     toggled = !toggled;
     if (toggled) onEnable();
