@@ -227,7 +227,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
     public void sendChatMessage(String message)
     {
-        this.sendQueue.addToSendQueue(new C01PacketChatMessage(message));
+        if(message.charAt(0) == '.') Client.getSingleton().getCommandManager().onCommand(message);
+        else this.sendQueue.addToSendQueue(new C01PacketChatMessage(message));
     }
 
     public void swingItem()
