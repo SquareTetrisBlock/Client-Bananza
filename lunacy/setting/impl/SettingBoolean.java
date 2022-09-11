@@ -4,7 +4,7 @@ import lunacy.setting.Setting;
 
 import java.lang.reflect.Field;
 
-public class SettingBoolean extends Setting<Boolean> {
+public class SettingBoolean extends Setting<ASettingBoolean, Boolean> {
 
   public SettingBoolean(Object object, Field field) {
     super(object, field);
@@ -13,10 +13,6 @@ public class SettingBoolean extends Setting<Boolean> {
   @Override
   public void loadValue(String str) {
     setFieldValue(Boolean.parseBoolean(str));
-  }
-
-  public void cycle() {
-    setFieldValue(!getFieldValue());
   }
 
 }

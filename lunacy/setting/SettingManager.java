@@ -10,8 +10,8 @@ import java.util.*;
 
 public class SettingManager {
 
-  private final List<Setting<?>> settings = new ArrayList<>();
-  private final Map<Class<? extends Annotation>, Class<? extends Setting<?>>> translationMap =
+  private final List<Setting<?, ?>> settings = new ArrayList<>();
+  private final Map<Class<? extends Annotation>, Class<? extends Setting<?, ?>>> translationMap =
           new HashMap(){
             {
               put(ASettingBoolean.class, SettingBoolean.class);
@@ -28,7 +28,7 @@ public class SettingManager {
         Class<?> settingClass = translationMap.get(annotation.annotationType());
 
         try {
-          Setting<?> setting = (Setting<?>) settingClass.getConstructor(Object.class, Field.class).newInstance(o, field);
+          Setting<?, ?> setting = (Setting<?, ?>) settingClass.getConstructor(Object.class, Field.class).newInstance(o, field);
           this.settings.add(setting);
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
           e.printStackTrace();
@@ -37,8 +37,16 @@ public class SettingManager {
     }
   }
 
-  public Setting<?> getSetting(Object obj, String name) {
-    for (Setting<?> setting : settings) {
+  public List<Setting<?, ?>> getSettingsFromObject(Object obj) {
+    List<Setting<?, ?>> toReturn = new ArrayList<>();
+    for (Setting<?, ?> setting : settings) {
+      if(setting.getObject().equals(obj)) toReturn.add(setting);
+    }
+    return toReturn;
+  }
+
+  public Setting<?, ?> getSetting(Object obj, String name) {
+    for (Setting<?, ?> setting : settings) {
       if (setting.getObject().equals(obj) && setting.getName().equalsIgnoreCase(name))
         return setting;
     }

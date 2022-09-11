@@ -3,12 +3,13 @@ package lunacy.setting;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
-public abstract class Setting<V> {
+public abstract class Setting<A, V> {
 
   private String name;
   private String desc;
   private Field field;
   private Object object;
+  protected A annotation;
 
   public Setting(Object object, Field field) {
     SettingInfo settingInfo = field.getAnnotation(SettingInfo.class);
